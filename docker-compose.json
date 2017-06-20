@@ -2,7 +2,7 @@
     "version": "3.2",
     "services": {
         "datalab": {
-            "image": "gcr.io/cloud-datalab/datalab:latest",
+            "build": ".",
             "ports": [
                 "127.0.0.1:8081:8080"
             ],
