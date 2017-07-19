@@ -6,7 +6,7 @@ RUN apt-get update && \
     apt-get -y autoremove && \
     apt-get -y autoclean
 
-RUN pip install -U --no-cache-dir google-cloud-dataflow oauth2client ipykernel
+RUN pip install -U --no-cache-dir google-cloud-dataflow oauth2client ipykernel apache-beam[gcp]
     # apache-beam apache-beam[gcp,test,docs] \
     # google-api-python-client google-cloud-dataflow tensorflow-transform tensorflow seaborn \
     # plotly numpy pandas scipy scikit-learn sympy statsmodels tornado pyzmq jinja2 jsonschema \
