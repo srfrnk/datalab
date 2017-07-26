@@ -1,3 +1,7 @@
 content/datalab/docs
 content/datalab/.config
 content/datalab/notebooks/.ipynb_checkpoints
+content/datalab/notebooks/beam-temp-output-*
+content/datalab/notebooks/model
+*.pyc
+content/datalab/notebooks/weather.000000000001

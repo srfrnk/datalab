@@ -10,3 +10,6 @@ run:
 
 stop:
 	docker-compose -f docker-compose.json kill
+
+setup-local:
+	sudo pip install -r requirements.txt
