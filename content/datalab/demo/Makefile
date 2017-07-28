@@ -14,8 +14,8 @@ tensorboard-cloud:
 data-prep:
 	-rm ./data/train.json
 	-rm ./data/test.json
-	head -n 1000 ./data/weather.000000000001 > ./data/train.json
-	-tail -n +1001 ./data/weather.000000000001 | head -n 1000 > ./data/test.json
+	head -n 1000000 ./data/weather.000000000001 > ./data/train.json
+	-tail -n +1000001 ./data/weather.000000000001 > ./data/test.json
 
 preprocess:
 	-rm -rf metadata
@@ -30,17 +30,17 @@ preprocess:
 		--trans_test_data_files test
 
 train-local:
-	# -rm -rf model
+	-rm -rf model
 	gcloud ml-engine local train \
 		--module-name trainer.task \
 		--package-path trainer/ \
 		-- \
-		--train_files trans_data/train-* \
-		--test_files trans_data/test-* \
+		--train_files 'trans_data/train-*' \
+		--test_files 'trans_data/test-*' \
 		--md_dir metadata \
 		--job_dir model \
 		--train_steps 1000 \
-		--eval_steps 10 \
+		--eval_steps 1 \
 		--verbosity DEBUG
 
 train-cloud-single:
