@@ -2,7 +2,7 @@ google-cloud-dataflow==2.0.0
 oauth2client==3.0.0
 ipykernel==4.6.1
 apache-beam[gcp]==2.0.0
-tensorflow==1.0.1
+tensorflow==1.2.1
 tensorflow_transform==0.1.10
 
 # apache-beam[gcp,test,docs]

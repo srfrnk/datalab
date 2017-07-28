@@ -13,3 +13,6 @@ stop:
 
 setup-local:
 	sudo pip install -r requirements.txt
+
+interactive:
+	docker-compose -f docker-compose.json exec datalab bash
