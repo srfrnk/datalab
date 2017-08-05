@@ -36,25 +36,22 @@ def generate_experiment_fn(md_dir, train_files, test_files, **experiment_args):
         raw_md, trans_md = load_md(run_config)
 
         feature_columns = [
-            feature_column.real_valued_column('stn'),
+            feature_column.one_hot_column(feature_column.sparse_column_with_integerized_feature('stn',bucket_size=1000000)),
             feature_column.real_valued_column('year'),
             feature_column.real_valued_column('mo'),
             feature_column.real_valued_column('da')
         ]
 
-        estimator = learn.LinearRegressor(
-            feature_columns=feature_columns,
-            model_dir=run_config.model_dir
-        )
-
-        # estimator = tf.contrib.learn.DNNLinearCombinedClassifier(
-        # model_dir=run_config.model_dir,
-        # linear_feature_columns=one_hot_columns,
-        # dnn_feature_columns=real_valued_columns,
-        # dnn_hidden_units=[100, 70, 50, 25],
-        # fix_global_step_increment_bug=True
-#
+        # estimator = learn.LinearRegressor(
+        # feature_columns=feature_columns,
+        # model_dir=run_config.model_dir
         # )
+
+        estimator = learn.DNNRegressor(
+            hidden_units=[100,100,100],
+            feature_columns=feature_columns,
+            model_dir=run_config.model_dir            
+        )
 
         train_input_fn = input_fn_maker.build_training_input_fn(
             metadata=trans_md,

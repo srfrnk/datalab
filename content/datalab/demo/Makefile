@@ -93,7 +93,7 @@ train-cloud-dist-hypertune:
 		--train-files ${BUCKET}/data/train.data.csv \
 		--eval-files ${BUCKET}/data/test.data.csv \
 		--train-steps 1000 \
-		--eval-steps 100 \
+		--eval-steps 1 \
 		--verbosity DEBUG
 	-gcloud ml-engine jobs stream-logs train_dist_hypertune_${TIMESTAMP}
 
