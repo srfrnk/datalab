@@ -11,12 +11,6 @@ tensorboard-local:
 tensorboard-cloud:
 	tensorboard --logdir ${BUCKET}/model
 
-data-prep:
-	-rm ./data/train.json
-	-rm ./data/test.json
-	head -n 1000000 ./data/weather.000000000001 > ./data/train.json
-	-tail -n +1000001 ./data/weather.000000000001 > ./data/test.json
-
 preprocess:
 	-rm -rf metadata
 	-rm -rf trans_data
@@ -24,8 +18,7 @@ preprocess:
 		--input_data_dir data \
 		--trans_data_dir trans_data \
 		--md_dir metadata \
-		--train_data_files train.json \
-		--test_data_files test.json \
+		--data_files data.json \
 		--trans_train_data_files train \
 		--trans_test_data_files test
 
